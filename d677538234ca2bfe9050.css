@@ -1,0 +1,75 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+h1, h2, h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0.8em;
+}
+
+.title-bg {
+  background-color: #172a3d;
+}
+
+.ratio-16x10 {
+  --bs-aspect-ratio: calc(10 / 16 * 100%);
+}
+
+.thumb-bk {
+  background-color: #888;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.card-shadow {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+.card-shadow:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+/*.zi-1 {
+  position: relative;
+  z-index: 1;
+}
+
+.zi-2 {
+  position: relative;
+  z-index: 2;
+}
+
+.zi-3 {
+  position: relative;
+  z-index: 3;
+}*/
+
+.fa {
+  padding: 5px;
+  font-size: 26px;
+  width: 45px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.5;
+}
+
+.link-unstyled, .link-unstyled:link, .link-unstyled:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.pfaq {
+  margin-left: 30px;
+}

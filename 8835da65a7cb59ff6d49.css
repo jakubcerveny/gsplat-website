@@ -1,0 +1,263 @@
+html {
+    overflow: hidden;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+
+    /* Disable selection */
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    user-select: none;
+}
+
+#gsplat-canvas {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    touch-action: none;
+}
+
+#error-message {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 8px 12px;
+    color: white;
+    background-color: #256173;
+    font-size: 16px;
+    user-select: text;
+    visibility: hidden;
+}
+.warning {
+    background-color: rgb(198, 144, 43) !important;
+}
+.error {
+    background-color: rgb(142, 34, 34) !important;
+}
+.show {
+    visibility: visible !important;
+}
+
+/*** Controls containers ***/
+
+.controls {
+    position: fixed;
+    margin: 1px;
+}
+.controls.top { top: 0 }
+.controls.bottom { bottom: 0 }
+.controls.left { left: 0 }
+.controls.right { right: 0 }
+.controls.center { left: 50% }
+
+/*** Buttons ***/
+
+.button {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    padding: 6px;
+    margin: 3px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px #333;
+    background-color: #00000010;
+    border-radius: 5px;
+}
+
+.button:hover, .button.down {
+    color: #ddd;
+    text-shadow: 1px 1px 3px #000;
+    background-color: #00000090;
+}
+.button:active {
+    color: #888;
+}
+
+/*** Tooltips ***/
+
+.button .tooltip {
+    visibility: hidden;
+    background-color: #555;
+    color: white;
+    padding: 5px;
+    border-radius: 6px;
+
+    text-shadow: none;
+    font-size: 16px;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+
+    margin-left: -45px;
+    width: 80px;
+}
+
+.button:hover .tooltip { visibility: visible; }
+.button.down .tooltip { visibility: hidden; }
+.button.disabled .tooltip { visibility: hidden; }
+
+.button .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.button .tooltip.left { margin-left: -16px; }
+.button .tooltip.left::after { left: 20px; }
+
+.button .tooltip.right { margin-left: -75px; }
+.button .tooltip.right::after { left: auto; right: 15px; }
+
+.button .tooltip.width-100 { width: 100px }
+
+
+/*** Menus ****/
+
+.menu {
+    visibility: hidden;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    bottom: 115%;
+    background-color: #000000a0;
+    border-radius: 5px;
+    min-width: 170px;
+    text-align: left;
+}
+
+.menu.right {
+    left: auto;
+    right: 0;
+}
+
+.button.down .menu { visibility: visible; }
+.button.disabled .menu { visibility: hidden; }
+
+.menu-item {
+    color: white;
+    font-size: 18px;
+    text-shadow: none;
+    text-align: left;
+    border-radius: 5px;
+    padding: 5px 12px 5px 5px;
+}
+
+.menu-item:first-child { padding-top: 6px }
+.menu-item:last-child { padding-bottom: 6px }
+
+.menu-item:hover { background-color: #000000a0; }
+.menu-item:active { color: #aaa; }
+
+.menu-item.disabled { color: #888; }
+.menu-item.disabled:hover { background-color: #0000; }
+
+.menu-icon {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.menu-separator {
+    height: 1px;
+    background-color: #aaa;
+    margin: 5px 10px 5px 20px;
+}
+
+.menu-panel {
+    display: block;
+    font-size: 18px;
+    color: white;
+    text-shadow: none;
+    text-align: left;
+    padding: 5px 5px 5px 5px;
+}
+.menu-indent {
+    padding-left: 29px;
+}
+
+.dot {
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+/*** Dataset info ***/
+
+.data-info {
+    display: block;
+    font-size: 18px;
+    color: white;
+    text-shadow: none;
+    text-align: left;
+    padding: 10px;
+    user-select: text;
+    min-width: 250px;
+}
+.data-info .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 2px 0 10px 0;
+}
+.data-info p {
+    margin: 0 0 10px 0;
+}
+.data-info label {
+    font-weight: bold;
+    user-select: none;
+}
+
+
+/*** Progress bar ***/
+
+.progress-wrap {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+    text-align: center;
+}
+.progress-bytes {
+    display: block;
+    color: #fff;
+    padding: 8px;
+}
+.progress-bar {
+    /*background-color: #fff;*/
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: 2px;
+    width: 180px;
+}
+.progress-value {
+    display: block;
+    height: 10px;
+    width: 0%;
+    background-color: #fff;
+    border-radius: 2px;
+    /*transition: width 100ms ease-in-out;*/
+}
